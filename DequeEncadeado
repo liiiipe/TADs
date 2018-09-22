@@ -2,7 +2,7 @@
 using std::nothrow;
 
 template <typename t>
-struct Fila{
+struct Deque{
 	struct noh{
 		T elem; // campo para armazenar o elemento
 		noh ant; // campo para apontar pro anterior
