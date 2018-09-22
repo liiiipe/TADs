@@ -22,8 +22,10 @@ struct Deque{
 		n->ant = nullptr; // campo ant do novo nó aponta pra nulo, ja que ele vai ser a extremidade esquerda
 		if(vazia())
 			{D = n;} // se tiver vazia o ponteiro D aponta pro novo nó, observe que logo depois o E tambem apontara pro n
-		else
-			{E->ant = n;} // se não tiver vazia, o campo ant apontado pelo ponteiro E aponta para o novo nó
+		else{
+			E->ant = n; // se não tiver vazia, o campo ant apontado pelo ponteiro E aponta para o novo nó
+			n->prox = E; // *pequeno erro corrigido, o campo prox do novo nó não estava apontando pro proximo
+		}
 		E = n; // depois da inserção pela esquerda, o ponteiro E aponta para o novo nó
 		return false;
 	}
@@ -34,8 +36,10 @@ struct Deque{
 		n->prox = nullptr; // campo prox do novo nó aponta pra nulo, ja que ele vai ser a extremidade direita
 		if(vazia())
 			{E = n;} // se tiver vazia o ponteiro E aponta pro novo nó, observe que logo depois o D tambem apontara pro n
-		else
-			{D->prox = n;} // se não tiver vazia, o campo prox apontado pelo ponterio D aponta para o novo nó
+		else{
+			D->prox = n; // se não tiver vazia, o campo prox apontado pelo ponterio D aponta para o novo nó
+			n->ant = D; // *pequeno erro corrigido, o campo ant do novo nó não estava apontando pro anterior
+		}
 		D = n; // depois da inserção pela direita, o ponteiro D aponta para o novo nó
 		return false;
 	}
