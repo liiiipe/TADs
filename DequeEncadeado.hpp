@@ -1,7 +1,7 @@
 #include <new>
 using std::nothrow;
 
-template <typename t>
+template <typename T>
 struct Deque{
 	struct noh{
 		T elem; // campo para armazenar o elemento
