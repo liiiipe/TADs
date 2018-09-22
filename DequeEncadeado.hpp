@@ -5,8 +5,8 @@ template <typename T>
 struct Deque{
 	struct noh{
 		T elem; // campo para armazenar o elemento
-		noh ant; // campo para apontar pro anterior
-		noh prox; // campo para apontar pro proximo
+		noh *ant; // campo para apontar pro anterior
+		noh *prox; // campo para apontar pro proximo
 	};
 	noh *E, *D; // ponteiro para a esquerda e direita do deque
 	void inicializar(){
