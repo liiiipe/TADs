@@ -4,7 +4,7 @@ using std::nothrow;
 struct Fila{
 	struct noh{
 		T elem;
-		noh prox;
+		noh *prox;
 	};
 	noh *I, *F;
 	void inicializar(){
