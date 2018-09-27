@@ -20,8 +20,10 @@ struct Deque{
 		if(n == nullptr){return true;} // teste de alocação
 		n->elem = e; // campo elem do novo nó recebe o elemento
 		n->ant = nullptr; // campo ant do novo nó aponta pra nulo, ja que ele vai ser a extremidade esquerda
-		if(vazia())
-			{D = n;} // se tiver vazia o ponteiro D aponta pro novo nó, observe que logo depois o E tambem apontara pro n
+		if(vazia()){
+			n->prox = nullptr;
+			D = n; // se tiver vazia o ponteiro D aponta pro novo nó, observe que logo depois o E tambem apontara pro n
+		} 
 		else{
 			E->ant = n; // se não tiver vazia, o campo ant apontado pelo ponteiro E aponta para o novo nó
 			n->prox = E; // *pequeno erro corrigido, o campo prox do novo nó não estava apontando pro proximo
@@ -34,8 +36,10 @@ struct Deque{
 		if(n == nullptr){return true;}
 		n->elem = e;
 		n->prox = nullptr; // campo prox do novo nó aponta pra nulo, ja que ele vai ser a extremidade direita
-		if(vazia())
-			{E = n;} // se tiver vazia o ponteiro E aponta pro novo nó, observe que logo depois o D tambem apontara pro n
+		if(vazia()){
+			n->ant = nullptr;
+			E = n; // se tiver vazia o ponteiro E aponta pro novo nó, observe que logo depois o D tambem apontara pro n
+		}
 		else{
 			D->prox = n; // se não tiver vazia, o campo prox apontado pelo ponterio D aponta para o novo nó
 			n->ant = D; // *pequeno erro corrigido, o campo ant do novo nó não estava apontando pro anterior
@@ -47,13 +51,18 @@ struct Deque{
 		T e = E->elem; // variavel "e" recebe o elemento que esta no campo elem apontado pelo ponteiro E
 		noh *n = E; // ponteiro n auxiliar, que aponta para onde E está apontando
 		E = E->prox; // agora E aponta para onde o campo prox apontado pelo ponteiro E esta apontando 
+		if(!vazia()){E->ant = nullptr;}
 		delete n; // deleto o ponteiro auxilar que está apontando para onde o E estava
 		return e; // retorno o elemento removido
 	}
-	T remover_dir(){ // analoga a remover_esq
+	T remover_dir(){ 
 		T e = D->elem;
 		noh *n = D;
 		D = D->ant;
+		if(D != nullptr) // acertando os ponteiros em dois casos
+			{D->prox = nullptr;}
+		else
+			{E = nullptr;}
 		delete n;
 		return e;
 	}

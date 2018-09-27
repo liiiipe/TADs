@@ -56,7 +56,7 @@ struct Conjunto{
 		}
 		else{
 			// esse else abrange dois possiveis casos, do elemento esta no meio ou na "extremidade direita"
-			// primeira linha pode vir aq
+			// primeira linha pode vir aqui
 			p = p->ant; // o ponteiro auxiliar vai pro anterior
 			p->prox = i.n->prox; // o campo prox do noh apontando por p recebe o campo prox apontado pelo iterador
 			p = i.n; // ponteiro p volta a apontar para o i.n, pra ser desalocado junto
